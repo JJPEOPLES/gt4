@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Deployment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #6200EA;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .button {
+      display: inline-block;
+      background-color: #6200EA;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>GT4 Deployment Test</h1>
+  
+  <h2>Check for common issues:</h2>
+  
+  <h3>1. Verify JavaScript paths</h3>
+  <p>Make sure the JavaScript files are being loaded correctly:</p>
+  <pre id="js-paths"></pre>
+  
+  <h3>2. Verify CSS paths</h3>
+  <p>Make sure the CSS files are being loaded correctly:</p>
+  <pre id="css-paths"></pre>
+  
+  <h3>3. Check for React root element</h3>
+  <p>Make sure the root element exists:</p>
+  <pre id="root-check"></pre>
+  
+  <h3>4. Test loading a simple React component</h3>
+  <div id="test-root"></div>
+  
+  <a href="https://gt4draw.netlify.app" class="button">Go to GT4 App</a>
+  
+  <script>
+    // Check JavaScript paths
+    const scripts = document.querySelectorAll('script');
+    const jsPathsEl = document.getElementById('js-paths');
+    jsPathsEl.textContent = Array.from(scripts).map(s => s.src).join('\n');
+    
+    // Check CSS paths
+    const styles = document.querySelectorAll('link[rel="stylesheet"]');
+    const cssPathsEl = document.getElementById('css-paths');
+    cssPathsEl.textContent = Array.from(styles).map(s => s.href).join('\n');
+    
+    // Check for root element
+    const rootCheckEl = document.getElementById('root-check');
+    const rootEl = document.getElementById('root');
+    rootCheckEl.textContent = rootEl ? 'Root element found' : 'Root element NOT found';
+    
+    // Load React and ReactDOM from CDN
+    const reactScript = document.createElement('script');
+    reactScript.src = 'https://unpkg.com/react@18/umd/react.production.min.js';
+    document.body.appendChild(reactScript);
+    
+    const reactDomScript = document.createElement('script');
+    reactDomScript.src = 'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js';
+    document.body.appendChild(reactDomScript);
+    
+    // Test a simple React component
+    reactDomScript.onload = function() {
+      try {
+        const e = React.createElement;
+        const TestComponent = () => {
+          return e('div', { style: { padding: '10px', backgroundColor: '#e0f7fa', borderRadius: '5px' } }, 
+            e('h4', null, 'React is working!'),
+            e('p', null, 'If you see this message, React is loaded correctly.')
+          );
+        };
+        
+        ReactDOM.render(
+          e(TestComponent, null),
+          document.getElementById('test-root')
+        );
+      } catch (error) {
+        document.getElementById('test-root').innerHTML = `<div style="color: red">Error: ${error.message}</div>`;
+      }
+    };
+  </script>
+</body>
+</html>

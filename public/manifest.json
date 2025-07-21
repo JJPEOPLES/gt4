@@ -1,0 +1,16 @@
+{
+  "short_name": "GT4",
+  "name": "GT4 Drawing Engine",
+  "description": "A powerful web-based drawing engine that's better than Procreate",
+  "icons": [
+    {
+      "src": "./logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#6200EA",
+  "background_color": "#121212"
+}

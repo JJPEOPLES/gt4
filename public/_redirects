@@ -1,0 +1,5 @@
+/fallback    /fallback.html   200
+/GT5    /GT5/index.html   200
+/GT5/    /GT5/index.html   200
+/GT5/*    /GT5/index.html   200
+/*    /index.html   200

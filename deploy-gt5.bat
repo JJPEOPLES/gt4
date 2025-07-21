@@ -1,0 +1,3 @@
+@echo off
+echo Deploying GT5 static page...
+node deploy.js

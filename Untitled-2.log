@@ -1,0 +1,272 @@
+$ set "CI=false" && set "TSC_COMPILE_ON_ERROR=true" && npm run build
+
+> gt4@1.0.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Compiled with warnings.
+
+[eslint]
+src\components\Admin\AdminPanel.tsx
+  Line 24:3:   'Divider' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 40:22:  'query' is defined but never used    @typescript-eslint/no-unused-vars
+
+src\components\Auth\AuthContext.tsx
+  Line 54:9:  'createCreatorAccount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\Canvas\Canvas.tsx
+  Line 28:69:  'currentLayer' is assigned a value but never used                                                                                                                                                 @typescript-eslint/no-unused-vars
+  Line 103:6:  React Hook useEffect has missing dependencies: 'addToHistory', 'brushColor', 'brushOpacity', 'brushSize', 'height', 'isDrawing', and 'width'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\LandingPage\AboutSection.tsx
+  Line 13:3:  'Divider' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\components\LandingPage\CodingJourney.tsx
+  Line 6:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\components\LandingPage\GallerySection.tsx
+  Line 20:3:    'Divider' is defined but never used                        @typescript-eslint/no-unused-vars
+  Line 22:3:    'Avatar' is defined but never used                         @typescript-eslint/no-unused-vars
+  Line 152:10:  'collaboratorEmail' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  Line 152:29:  'setCollaboratorEmail' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\LandingPage\SimpleHeader.tsx
+  Line 14:3:  'Divider' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\DrawingApp.tsx
+  Line 22:3:   'Slider' is defined but never used              @typescript-eslint/no-unused-vars
+  Line 30:3:   'Grid' is defined but never used                @typescript-eslint/no-unused-vars
+  Line 33:8:   'CollabPanel' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 44:8:   'PaletteIcon' is defined but never used         @typescript-eslint/no-unused-vars
+  Line 55:8:   'PersonIcon' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 65:9:   'theme' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  Line 78:24:  'isCreator' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\pages\InitCreator.tsx
+  Line 11:3:  'Divider' is defined but never used  @typescript-eslint/no-unused-vars
+
+src\pages\LandingPage.tsx
+  Line 10:3:  'CardMedia' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 11:3:  'Stack' is defined but never used              @typescript-eslint/no-unused-vars
+  Line 14:3:  'List' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 15:3:  'ListItem' is defined but never used           @typescript-eslint/no-unused-vars
+  Line 16:3:  'ListItemIcon' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 17:3:  'ListItemText' is defined but never used       @typescript-eslint/no-unused-vars
+  Line 18:3:  'Fade' is defined but never used               @typescript-eslint/no-unused-vars
+  Line 24:8:  'ArrowForwardIcon' is defined but never used   @typescript-eslint/no-unused-vars
+  Line 25:8:  'CheckCircleIcon' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 40:9:  'isMobile' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+TS2339: Property 'toDate' does not exist on type 'Date'.
+     95 |               uid: user.uid,
+     96 |               ...userData,
+  >  97 |               joinedAt: userData.joinedAt.toDate()
+        |                                           ^^^^^^
+     98 |             });
+     99 |             setIsCreator(userData.isCreator);
+    100 |           } else {
+
+TS7006: Parameter 'e' implicitly has an 'any' type.
+    53 |
+    54 |       // Add event listeners
+  > 55 |       canvas.on('path:created', (e) => {
+       |                                  ^
+    56 |         console.log('Path created', e);
+    57 |         // Make sure the path is selectable
+    58 |         if (e.path) {
+
+TS7006: Parameter 'e' implicitly has an 'any' type.
+    63 |       });
+    64 |
+  > 65 |       canvas.on('object:added', (e) => {
+       |                                  ^
+    66 |         console.log('Object added', e);
+    67 |         if (!isDrawing) {
+    68 |           addToHistory();
+
+TS7006: Parameter 'e' implicitly has an 'any' type.
+    70 |       });
+    71 |
+  > 72 |       canvas.on('object:modified', (e) => {
+       |                                     ^
+    73 |         console.log('Object modified', e);
+    74 |         addToHistory();
+    75 |       });
+
+TS7006: Parameter 'index' implicitly has an 'any' type.
+    181 |       // In a real implementation, objects would be assigned to layers
+    182 |       // This is a simplified version
+  > 183 |       objects.forEach((obj: any, index) => {
+        |                                  ^^^^^
+    184 |         const layerIndex = index % layers.length;
+    185 |         const layer = layers[layerIndex];
+    186 |         if (layer) {
+
+TS7006: Parameter 'obj' implicitly has an 'any' type.
+    210 |
+    211 |       // Convert objects to JSON for storage
+  > 212 |       const objects = allObjects.map(obj => {
+        |                                      ^^^
+    213 |         // Ensure all properties are captured
+    214 |         return obj.toJSON(['id', 'name', 'visible', 'locked', 'selectable', 'evented']);
+    215 |       });
+
+TS7006: Parameter 'event' implicitly has an 'any' type.
+    220 |
+    221 |   // Handle image selection
+  > 222 |   const handleImageSelect = (event) => {
+        |                              ^^^^^
+    223 |     if (event.target.files && event.target.files[0]) {
+    224 |       const file = event.target.files[0];
+    225 |       const reader = new FileReader();
+
+TS2322: Type 'string | ArrayBuffer | null' is not assignable to type 'string'.
+  Type 'null' is not assignable to type 'string'.
+    229 |           ...newArtwork,
+    230 |           imageFile: file,
+  > 231 |           imagePreview: e.target.result
+        |           ^^^^^^^^^^^^
+    232 |         });
+    233 |       };
+    234 |
+
+TS18047: 'e.target' is possibly 'null'.
+    229 |           ...newArtwork,
+    230 |           imageFile: file,
+  > 231 |           imagePreview: e.target.result
+        |                         ^^^^^^^^
+    232 |         });
+    233 |       };
+    234 |
+
+TS7006: Parameter 'e' implicitly has an 'any' type.
+    238 |
+    239 |   // Handle form input changes
+  > 240 |   const handleInputChange = (e) => {
+        |                              ^
+    241 |     const { name, value } = e.target;
+    242 |     setNewArtwork({
+    243 |       ...newArtwork,
+
+TS2345: Argument of type '{ label: string; description: string; artist: string; imageFile: null; imagePreview: string; }' is not assignable to parameter of type 'SetStateAction<{ label: string; description: string; artist: string; imageFile: null; imagePreview: string; isCollaborative: boolean; collaborators: never[]; }>'.
+  Type '{ label: string; description: string; artist: string; imageFile: null; imagePreview: string; }' is missing the following properties from type '{ label: string; description: string; artist: string; imageFile: null; imagePreview: string; isCollaborative: boolean; collaborators: never[]; }': isCollaborative, collaborators
+    305 |
+    306 |       // Reset form
+  > 307 |       setNewArtwork({
+        |                     ^
+  > 308 |         label: "",
+        | ^^^^^^^^^^^^^^^^^^
+  > 309 |         description: "",
+        | ^^^^^^^^^^^^^^^^^^
+  > 310 |         artist: "",
+        | ^^^^^^^^^^^^^^^^^^
+  > 311 |         imageFile: null,
+        | ^^^^^^^^^^^^^^^^^^
+  > 312 |         imagePreview: ""
+        | ^^^^^^^^^^^^^^^^^^
+  > 313 |       });
+        | ^^^^^^^^
+    314 |     } catch (error) {
+    315 |       console.error("Error uploading artwork:", error);
+    316 |       setSnackbarMessage("Failed to upload artwork. Please try again.");
+
+TS7006: Parameter 'artwork' implicitly has an 'any' type.
+    338 |
+    339 |   // Open image in modal
+  > 340 |   const handleImageClick = (artwork) => {
+        |                             ^^^^^^^
+    341 |     setSelectedImage(artwork.src);
+    342 |     setSelectedArtwork(artwork);
+    343 |     setOpenImageModal(true);
+
+TS7006: Parameter 'id' implicitly has an 'any' type.
+    345 |
+    346 |   // Remove an artwork from the gallery
+  > 347 |   const handleRemoveArtwork = async (id, storagePath) => {
+        |                                      ^^
+    348 |     try {
+    349 |       // Delete from Firestore
+    350 |       await deleteDoc(doc(db, "artworks", id));
+
+TS7006: Parameter 'storagePath' implicitly has an 'any' type.
+    345 |
+    346 |   // Remove an artwork from the gallery
+  > 347 |   const handleRemoveArtwork = async (id, storagePath) => {
+        |                                          ^^^^^^^^^^^
+    348 |     try {
+    349 |       // Delete from Firestore
+    350 |       await deleteDoc(doc(db, "artworks", id));
+
+TS2746: This JSX tag's 'children' prop expects a single child of type 'ReactElement<any, string | JSXElementConstructor<any>>', but multiple children were provided.
+    110 |
+    111 |   return (
+  > 112 |     <HideOnScroll>
+        |      ^^^^^^^^^^^^
+    113 |       <AppBar
+    114 |         position="fixed"
+    115 |         color="transparent"
+
+TS2304: Cannot find name 'onStartJourney'.
+    229 |
+    230 |       {/* Pricing Section */}
+  > 231 |       <PricingSection onStartJourney={onStartJourney} />
+        |                                       ^^^^^^^^^^^^^^
+    232 |
+    233 |       {/* About Section */}
+    234 |       <AboutSection />
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  396.36 kB (+55.93 kB)  build\static\js\main.9ff832c4.js
+  2.66 kB                build\static\js\488.abf3abba.chunk.js
+  1.65 kB                build\static\css\main.16f6c086.css
+
+The project was built assuming it is hosted at ./.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+​
+(build.command completed in 58.9s)
+
+Deploying to Netlify
+────────────────────────────────────────────────────────────────
+
+Deploy path:        C:\Users\Prime\OneDrive\Desktop\GT4\build
+Configuration path: C:\Users\Prime\OneDrive\Desktop\GT4\netlify.toml
+
+✔ Finished uploading blobs to deploy store
+✔ No cached functions were found
+✔ Finished hashing
+✔ CDN requesting 5 files
+✔ Finished uploading 5 assets
+✔ Deploy is live!
+​
+Netlify Build Complete
+────────────────────────────────────────────────────────────────
+​
+(Netlify Build completed in 1m 12.2s)
+
+🚀 Deploy complete
+────────────────────────────────────────────────────────────────
+
+   ╭──────────────────────── ⬥  Production deploy is live ⬥  ─────────────────────────╮
+   │                                                                                  │
+   │                Deployed to production URL: https://gt4.k2lang.org                │
+   │                                                                                  │
+   │       Unique deploy URL: https://6875407aa964015ed936a4b8--gt4draw.netlify.app   │
+   │                                                                                  │
+   ╰──────────────────────────────────────────────────────────────────────────────────╯
+
+Build logs:         https://app.netlify.com/projects/gt4draw/deploys/6875407aa964015ed936a4b8
+Function logs:      https://app.netlify.com/projects/gt4draw/logs/functions
+Edge function Logs: https://app.netlify.com/projects/gt4draw/logs/edge-functions
+
+C:\Users\Prime\OneDrive\Desktop\GT4>

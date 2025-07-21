@@ -1,0 +1,3 @@
+@echo off
+echo Starting GT5 Drawing Engine...
+npm start

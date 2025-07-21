@@ -1,0 +1,32 @@
+[build]
+  command = "export CI=false && export TSC_COMPILE_ON_ERROR=true && npm run build:all"
+  publish = "build"
+
+[[redirects]]
+  from = "/GT5"
+  to = "/GT5/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/GT5/"
+  to = "/GT5/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/GT5/*"
+  to = "/GT5/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https:; font-src 'self' data: https: https://fonts.gstatic.com; object-src 'none'; media-src 'self' data: https:; worker-src 'self' blob:;"

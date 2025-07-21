@@ -1,0 +1,130 @@
+.canvas-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  background-image: 
+    linear-gradient(45deg, #e0e0e0 25%, transparent 25%), 
+    linear-gradient(-45deg, #e0e0e0 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #e0e0e0 75%), 
+    linear-gradient(-45deg, transparent 75%, #e0e0e0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.canvas-wrapper {
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.tool-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.tool-button:hover {
+  background-color: rgba(98, 0, 234, 0.1);
+}
+
+.tool-button.active {
+  background-color: rgba(98, 0, 234, 0.2);
+}
+
+.tool-button .icon {
+  margin-bottom: 4px;
+}
+
+.tool-button .label {
+  font-size: 12px;
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+}
+
+.color-swatch.active {
+  border-color: white;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.layer-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+.layer-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.layer-item.active {
+  background-color: rgba(98, 0, 234, 0.2);
+}
+
+.layer-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #333;
+  margin-right: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.layer-controls {
+  display: flex;
+  align-items: center;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(98, 0, 234, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(98, 0, 234, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(98, 0, 234, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FF5722" />
+    <meta
+      name="description"
+      content="GT5 - The next generation drawing engine"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>GT5 - Next Generation Drawing Engine</title>
+    <base href="%PUBLIC_URL%/">
+    <script>
+      // Handle base path for GT5 when deployed under /GT5 path
+      (function() {
+        // Check if we're running under the /GT5 path
+        if (window.location.pathname.indexOf('/GT5') === 0 && !window.location.pathname.endsWith('/')) {
+          // Add trailing slash to ensure relative paths work correctly
+          window.history.replaceState(null, document.title, window.location.pathname + '/' + window.location.search);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- Back to GT4 link that shows only until React loads -->
+    <div id="back-to-gt4" style="position: fixed; top: 20px; left: 20px; z-index: 9999;">
+      <a href="/" style="color: #FF5722; text-decoration: none; display: flex; align-items: center; font-family: 'Poppins', sans-serif;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span style="margin-left: 8px;">Back to GT4</span>
+      </a>
+    </div>
+    <script>
+      // Remove the back button once React has loaded
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var backButton = document.getElementById('back-to-gt4');
+          if (backButton && backButton.parentNode) {
+            backButton.parentNode.removeChild(backButton);
+          }
+        }, 1000); // Give React a second to load
+      });
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- Back to GT4 link that shows only until React loads -->
+    <div id="back-to-gt4" style="position: fixed; top: 20px; left: 20px; z-index: 9999;">
+      <a href="/" style="color: #FF5722; text-decoration: none; display: flex; align-items: center; font-family: 'Poppins', sans-serif;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span style="margin-left: 8px;">Back to GT4</span>
+      </a>
+    </div>
+    <script>
+      // Remove the back button once React has loaded
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var backButton = document.getElementById('back-to-gt4');
+          if (backButton && backButton.parentNode) {
+            backButton.parentNode.removeChild(backButton);
+          }
+        }, 1000); // Give React a second to load
+      });
+    </script>
+  </body>
+</html>

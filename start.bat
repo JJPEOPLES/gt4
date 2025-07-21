@@ -1,0 +1,3 @@
+@echo off
+echo Starting GT4 Drawing Engine...
+npm start
