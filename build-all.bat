@@ -1,5 +1,5 @@
 @echo off
-echo Testing deployment locally...
+echo Building GT4 and GT5...
 
 echo Installing GT4 dependencies...
 call npm install --legacy-peer-deps
@@ -18,8 +18,4 @@ echo Copying GT5 build to main build folder...
 if not exist "build\GT5" mkdir "build\GT5"
 xcopy /E /I /Y "GT5\build\*" "build\GT5\"
 
-echo Starting local server...
-cd build
-npx serve -l 3000
-
-echo Test server stopped.
+echo Build completed successfully!

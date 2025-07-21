@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+# Set environment variables
+export CI=false
+export TSC_COMPILE_ON_ERROR=true
+
+# Install GT4 dependencies with legacy-peer-deps
+echo "Installing GT4 dependencies..."
+npm install --legacy-peer-deps
+
 # Build GT4
 echo "Building GT4..."
 npm run build
@@ -8,7 +16,8 @@ npm run build
 # Build GT5
 echo "Building GT5..."
 cd GT5
-npm install
+echo "Installing GT5 dependencies..."
+npm install --legacy-peer-deps
 npm run build
 cd ..
 

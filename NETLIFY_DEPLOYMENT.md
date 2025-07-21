@@ -6,6 +6,7 @@ This guide explains how to deploy both GT4 and GT5 applications to Netlify.
 
 1. Updated the Netlify configuration to build both GT4 and GT5
 2. Added a custom build script that:
+   - Installs dependencies with `--legacy-peer-deps` flag to resolve dependency conflicts
    - Builds GT4
    - Builds GT5
    - Copies GT5 build files to the main build folder
@@ -48,6 +49,29 @@ If GT5 is not being deployed correctly:
 2. Verify that the `build:gt5` script in package.json is working correctly
 3. Make sure the GT5 application has `"homepage": "/GT5"` in its package.json
 4. Check that the redirects in netlify.toml are correct
+
+### Dependency Conflicts
+
+If you encounter dependency conflicts (npm error code ERESOLVE), we've already configured the build scripts to use the `--legacy-peer-deps` flag. This flag tells npm to ignore peer dependency conflicts and proceed with the installation anyway.
+
+If you're still having issues:
+
+1. Try clearing the npm cache:
+   ```
+   npm cache clean --force
+   ```
+
+2. Delete the node_modules folder and package-lock.json:
+   ```
+   rm -rf node_modules package-lock.json
+   rm -rf GT5/node_modules GT5/package-lock.json
+   ```
+
+3. Reinstall dependencies with the `--legacy-peer-deps` flag:
+   ```
+   npm install --legacy-peer-deps
+   cd GT5 && npm install --legacy-peer-deps && cd ..
+   ```
 
 ## Testing Locally
 
