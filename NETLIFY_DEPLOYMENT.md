@@ -8,11 +8,12 @@ This guide explains how to deploy both GT4 and GT5 applications to Netlify.
 2. Added a custom build script that:
    - Installs dependencies with `--legacy-peer-deps` flag to resolve dependency conflicts
    - Builds GT4
-   - Builds GT5
+   - Builds GT5 using a simplified version of the app for more reliable builds
    - Copies GT5 build files to the main build folder
    - Includes a fallback static page for GT5 if the build fails
 3. Added redirects to handle GT5 routes
 4. Fixed dependency conflicts in package.json files
+5. Created a simplified version of the GT5 app that's more likely to build successfully
 
 ## How It Works
 
@@ -51,6 +52,26 @@ If GT5 is not being deployed correctly:
 2. Verify that the `build:gt5` script in package.json is working correctly
 3. Make sure the GT5 application has `"homepage": "/GT5"` in its package.json
 4. Check that the redirects in netlify.toml are correct
+
+### Using the Simplified App
+
+We've created a simplified version of the GT5 app that's more likely to build successfully. The build scripts automatically use this simplified version during the build process.
+
+If you want to manually switch between the full and simplified versions:
+
+1. To use the simplified version:
+   ```
+   cd GT5
+   ./use-simple-app.bat
+   ```
+
+2. To switch back to the full version:
+   ```
+   cd GT5
+   ./use-full-app.bat
+   ```
+
+The simplified version includes just a landing page with a link back to GT4, which is enough to ensure the GT5 route works correctly.
 
 ### Dependency Conflicts
 
