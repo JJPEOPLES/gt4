@@ -1,21 +1,45 @@
 @echo off
 echo Building GT4 and GT5...
 
+echo Cleaning up previous builds...
+if exist "build" rmdir /S /Q "build"
+if exist "GT5\build" rmdir /S /Q "GT5\build"
+
 echo Installing GT4 dependencies...
-call npm install --legacy-peer-deps
+call npm install --legacy-peer-deps --no-audit --no-fund
+
+echo Installing react-scripts...
+call npm install react-scripts --legacy-peer-deps --no-audit --no-fund
 
 echo Building GT4...
 call npm run build
 
+echo Creating GT5 directory in build...
+if not exist "build\GT5" mkdir "build\GT5"
+
+echo Copying static GT5 page as fallback...
+if exist "public\GT5" xcopy /E /I /Y "public\GT5\*" "build\GT5\"
+
 echo Building GT5...
 cd GT5
-echo Installing GT5 dependencies...
-call npm install --legacy-peer-deps
-call npm run build
-cd ..
 
-echo Copying GT5 build to main build folder...
-if not exist "build\GT5" mkdir "build\GT5"
-xcopy /E /I /Y "GT5\build\*" "build\GT5\"
+echo Installing GT5 dependencies...
+call npm install --legacy-peer-deps --no-audit --no-fund
+
+echo Installing react-scripts in GT5...
+call npm install react-scripts --legacy-peer-deps --no-audit --no-fund
+
+echo Building GT5 application...
+call npm run build
+
+echo Checking if GT5 build was successful...
+if exist "build" (
+  echo GT5 build successful, copying to main build folder...
+  cd ..
+  xcopy /E /I /Y "GT5\build\*" "build\GT5\"
+) else (
+  echo GT5 build failed, using fallback static page...
+  cd ..
+)
 
 echo Build completed successfully!

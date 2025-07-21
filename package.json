@@ -8,8 +8,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:gt5": "cd GT5 && npm install --legacy-peer-deps && npm run build && cd .. && mkdir -p build/GT5 && cp -r GT5/build/* build/GT5/",
-    "build:all": "npm install --legacy-peer-deps && npm run build && npm run build:gt5"
+    "build:gt5": "cd GT5 && npm install --legacy-peer-deps --no-audit --no-fund && npm run build && cd .. && mkdir -p build/GT5 && cp -r GT5/build/* build/GT5/",
+    "build:all": "npm install --legacy-peer-deps --no-audit --no-fund && npm run build && npm run build:gt5",
+    "deploy": "netlify deploy --prod"
   },
   "eslintConfig": {
     "extends": [
@@ -37,7 +38,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
-    "@mui/lab": "^7.0.0-beta.14",
+    "@mui/lab": "^5.0.0-alpha.129",
     "@mui/material": "^5.12.1",
     "@supabase/supabase-js": "^2.51.0",
     "@testing-library/jest-dom": "^5.16.5",

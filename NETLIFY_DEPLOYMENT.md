@@ -10,7 +10,9 @@ This guide explains how to deploy both GT4 and GT5 applications to Netlify.
    - Builds GT4
    - Builds GT5
    - Copies GT5 build files to the main build folder
+   - Includes a fallback static page for GT5 if the build fails
 3. Added redirects to handle GT5 routes
+4. Fixed dependency conflicts in package.json files
 
 ## How It Works
 
@@ -54,6 +56,11 @@ If GT5 is not being deployed correctly:
 
 If you encounter dependency conflicts (npm error code ERESOLVE), we've already configured the build scripts to use the `--legacy-peer-deps` flag. This flag tells npm to ignore peer dependency conflicts and proceed with the installation anyway.
 
+We've also:
+1. Fixed the version conflict between @mui/lab and @mui/material
+2. Added missing dependencies to both package.json files
+3. Added additional flags to npm install commands to reduce noise and speed up installation
+
 If you're still having issues:
 
 1. Try clearing the npm cache:
@@ -69,8 +76,13 @@ If you're still having issues:
 
 3. Reinstall dependencies with the `--legacy-peer-deps` flag:
    ```
-   npm install --legacy-peer-deps
-   cd GT5 && npm install --legacy-peer-deps && cd ..
+   npm install --legacy-peer-deps --no-audit --no-fund
+   cd GT5 && npm install --legacy-peer-deps --no-audit --no-fund && cd ..
+   ```
+
+4. Run the fix-dependencies.bat script:
+   ```
+   ./fix-dependencies.bat
    ```
 
 ## Testing Locally

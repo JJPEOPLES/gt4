@@ -1,6 +1,20 @@
-# GT4 Drawing Engine
+# GT4 and GT5 Drawing Engine
+
+This repository contains both GT4 and GT5 drawing applications.
+
+## GT4
 
 GT4 is a powerful web-based drawing engine designed for artists who want professional-grade tools without the high cost of software like Procreate. Built with React and modern web technologies, GT4 offers a comprehensive suite of drawing tools, effects, and AI-powered features that exceed what's available in many commercial applications.
+
+## GT5
+
+GT5 is our next-generation drawing application with AI-enhanced brushes, smart layers, and a completely redesigned interface. It's currently in beta and can be accessed at `/GT5` when deployed.
+
+## Deployment
+
+For detailed deployment instructions, see:
+- [NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md) - Instructions for deploying to Netlify
+- [DEPLOYMENT.md](./DEPLOYMENT.md) - General deployment information
 
 ## Setting Up the Creator Account
 
@@ -75,10 +89,10 @@ GT4 includes a real-time user counting system that shows how many users are curr
 git clone https://github.com/yourusername/GT4.git
 ```
 
-2. Install dependencies
+2. Install dependencies with legacy-peer-deps flag
 ```
 cd GT4
-npm install
+npm install --legacy-peer-deps
 ```
 
 3. Set up environment variables
@@ -90,9 +104,21 @@ npm install
 npm start
 ```
 
-5. Build for production
+5. To start GT5 development server
 ```
-npm run build
+cd GT5
+npm install --legacy-peer-deps
+npm start
+```
+
+6. Build both applications for production
+```
+./build-all.bat
+```
+
+7. Deploy to Netlify
+```
+npm run deploy
 ```
 
 ## Supabase Setup
