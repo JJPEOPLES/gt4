@@ -110,24 +110,46 @@ const LandingPage: React.FC = () => {
                   Create stunning digital art with tools that rival expensive software.
                   100% free for everyone!
                 </Typography>
-                <Button 
-                  variant="contained" 
-                  color="primary" 
-                  size="large"
-                  onClick={() => navigate('/app')}
-                  sx={{ 
-                    py: 1.5, 
-                    px: 4,
-                    fontSize: '1.1rem',
-                    '&:hover': {
-                      transform: 'translateY(-3px)',
-                      boxShadow: '0 8px 15px rgba(98, 0, 234, 0.3)'
-                    },
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  Start Your Journey
-                </Button>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+                  <Button 
+                    variant="contained" 
+                    color="primary" 
+                    size="large"
+                    onClick={() => navigate('/app')}
+                    sx={{ 
+                      py: 1.5, 
+                      px: 4,
+                      fontSize: '1.1rem',
+                      '&:hover': {
+                        transform: 'translateY(-3px)',
+                        boxShadow: '0 8px 15px rgba(98, 0, 234, 0.3)'
+                      },
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Start Your Journey
+                  </Button>
+                  <Button 
+                    variant="outlined" 
+                    color="primary" 
+                    size="large"
+                    href="https://gt5draw.netlify.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ 
+                      py: 1.5, 
+                      px: 4,
+                      fontSize: '1.1rem',
+                      '&:hover': {
+                        transform: 'translateY(-3px)',
+                        boxShadow: '0 4px 10px rgba(98, 0, 234, 0.15)'
+                      },
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Try GT5 Beta
+                  </Button>
+                </Stack>
               </Box>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -332,12 +354,17 @@ const LandingPage: React.FC = () => {
                     <Button
                       variant="contained"
                       size="large"
-                      href="/GT5"
+                      href="https://gt5draw.netlify.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       sx={{
                         bgcolor: '#FF5722',
                         '&:hover': {
-                          bgcolor: '#FF7043'
-                        }
+                          bgcolor: '#FF7043',
+                          transform: 'translateY(-2px)',
+                          boxShadow: '0 4px 12px rgba(255, 87, 34, 0.3)'
+                        },
+                        transition: 'all 0.3s ease'
                       }}
                     >
                       Try Now

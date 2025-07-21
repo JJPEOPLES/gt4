@@ -2,6 +2,37 @@
 
 GT5 is a next-generation web-based drawing application built with React and TypeScript. It offers a professional-grade digital art creation experience directly in your browser.
 
+## Deployment to Netlify
+
+This repository is set up to be deployed to Netlify as a standalone application at https://gt5draw.netlify.app.
+
+### Deployment Steps
+
+1. Create a new site in Netlify
+2. Connect to this repository
+3. Configure the build settings:
+   - Build command: `npm run build`
+   - Publish directory: `build`
+   - Base directory: (leave blank)
+
+### Environment Variables
+
+Add the following environment variables in Netlify:
+
+- `CI=false` - Prevents the build from failing on warnings
+- `NODE_VERSION=16` - Ensures the correct Node.js version is used
+
+### Redirects
+
+Add the following redirects in your `netlify.toml` file:
+
+```toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
 ## Features
 
 - **AI-Enhanced Brushes**: Experience next-gen brushes with AI-powered stroke prediction and automatic smoothing for professional results.
@@ -14,7 +45,7 @@ GT5 is a next-generation web-based drawing application built with React and Type
 1. Clone this repository
 2. Install dependencies:
    ```
-   npm install
+   npm install --legacy-peer-deps
    ```
 3. Start the development server:
    ```
@@ -68,6 +99,10 @@ src/
 ├── styles/          # CSS styles
 └── utils/           # Utility functions
 ```
+
+## Integration with GT4
+
+GT4 links to this application using absolute URLs to https://gt5draw.netlify.app. If you change the deployment URL, make sure to update the links in the GT4 application.
 
 ## License
 

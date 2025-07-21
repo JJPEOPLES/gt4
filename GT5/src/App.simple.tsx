@@ -111,7 +111,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter basename="/GT5">
+      <BrowserRouter>
         <div className="app">
           <Routes>
             <Route path="/" element={<SimpleLandingPage />} />

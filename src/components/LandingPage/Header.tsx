@@ -66,7 +66,8 @@ const Header: React.FC = () => {
     { name: 'Features', href: '#features' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'About', href: '#about' }
+    { name: 'About', href: '#about' },
+    { name: 'Try GT5 Beta', href: 'https://gt5draw.netlify.app', isExternal: true }
   ];
 
   const drawer = (
@@ -81,14 +82,27 @@ const Header: React.FC = () => {
       </Box>
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.name} disablePadding>
+          <ListItem 
+            key={item.name} 
+            disablePadding 
+            component="a"
+            href={item.href}
+            target={item.isExternal ? "_blank" : "_self"}
+            rel={item.isExternal ? "noopener noreferrer" : ""}
+            sx={{ 
+              textDecoration: 'none',
+              color: item.isExternal ? 'primary.main' : 'inherit',
+              fontWeight: item.isExternal ? 600 : 400
+            }}
+          >
             <ListItemText 
               primary={item.name} 
               sx={{ 
                 textAlign: 'center',
                 py: 1.5,
                 '& .MuiTypography-root': {
-                  fontSize: '1.1rem'
+                  fontSize: '1.1rem',
+                  fontWeight: item.isExternal ? 600 : 400
                 }
               }} 
             />
@@ -99,6 +113,9 @@ const Header: React.FC = () => {
             variant="contained" 
             color="primary"
             fullWidth
+            href="https://gt5draw.netlify.app/draw"
+            target="_blank"
+            rel="noopener noreferrer"
             sx={{ py: 1.5 }}
           >
             Start Drawing
@@ -140,13 +157,16 @@ const Header: React.FC = () => {
               {navItems.map((item) => (
                 <Button 
                   key={item.name} 
-                  color="inherit"
+                  color={item.isExternal ? "primary" : "inherit"}
+                  href={item.href}
+                  target={item.isExternal ? "_blank" : "_self"}
+                  rel={item.isExternal ? "noopener noreferrer" : ""}
                   sx={{ 
-                    fontWeight: 500,
+                    fontWeight: item.isExternal ? 600 : 500,
                     opacity: 0.9,
                     '&:hover': {
                       opacity: 1,
-                      background: 'rgba(255, 255, 255, 0.05)'
+                      background: item.isExternal ? 'rgba(98, 0, 234, 0.1)' : 'rgba(255, 255, 255, 0.05)'
                     }
                   }}
                 >
@@ -156,6 +176,9 @@ const Header: React.FC = () => {
               <Button 
                 variant="contained" 
                 color="primary"
+                href="https://gt5draw.netlify.app/draw"
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{ 
                   ml: 2,
                   px: 3,
