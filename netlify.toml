@@ -1,5 +1,5 @@
 [build]
-  command = "export CI=false && export TSC_COMPILE_ON_ERROR=true && npm run build:all"
+  command = "chmod +x netlify-build.sh && ./netlify-build.sh"
   publish = "build"
 
 [[redirects]]
